@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import CopyPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { fileURLToPath   } from 'url'
+import { fileURLToPath } from 'url'
 import webpack from 'webpack'
 
 const __filename = fileURLToPath(import.meta.url)

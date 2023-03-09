@@ -22,6 +22,11 @@ export function loader() {
             }
         }
     }
+    
+    // const eslint = {
+    //     'eslint-loader'
+    // }
+    
     const loaders = {
         rules: [
             scss,

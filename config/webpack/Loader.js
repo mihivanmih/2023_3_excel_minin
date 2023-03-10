@@ -20,6 +20,9 @@ export function loader() {
             options: {
                 presets: ['@babel/preset-env']
             }
+        },
+        resolve: {
+            fullySpecified: false,
         }
     }
     

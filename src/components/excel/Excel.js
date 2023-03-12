@@ -17,7 +17,7 @@ export class Excel {
             const $el = $.create('div', component.className)
             
             const componentOne = new component($el)
-            //$.html($el, componentOne.toHtml())
+            
             $el.html(componentOne.toHtml())
             $root.append($el)
             return componentOne

@@ -7,7 +7,7 @@ const CODES = {
 
 const createCell = (col) => {
     return `
-        <div class="cell selected" contenteditable="">
+        <div class="cell" contenteditable="">
             ${col}
         </div>
     `
@@ -20,10 +20,10 @@ const createCol = (content) => {
     `
 }
 
-const createRow = (content) => {
+const createRow = (index, content) => {
     return `
         <div class="row">
-            <div class="row-info"></div>
+            <div class="row-info">${index ? index : ''}</div>
             <div class="row-data">${content}</div>
         </div>
     `
@@ -48,9 +48,13 @@ export const createTable = (rowsCount = 150) => {
         })
         .join('')
     
-    rows.push(createRow(cols))
+    rows.push(createRow(null, cols))
     for(let i = 0; i < rowsCount; i++){
-        rows.push(createRow())
+        const cells = new Array(colsCount)
+            .fill('')
+            .map(createCell)
+            .join('')
+        rows.push(createRow(i + 1, cells))
     }
     
     return rows.join(' ')

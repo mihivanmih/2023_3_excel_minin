@@ -16,14 +16,21 @@ const createCol = (content) => {
     return `
         <div class="column">
             ${content}
+            <div class="col-resize"></div>
         </div>
     `
 }
 
 const createRow = (index, content) => {
+    
+    const resize = index ? '<div class="row-resize"></div>' : ''
+    
     return `
         <div class="row">
-            <div class="row-info">${index ? index : ''}</div>
+            <div class="row-info">
+                ${index ? index : ''}
+                ${resize}
+            </div>
             <div class="row-data">${content}</div>
         </div>
     `
@@ -33,7 +40,7 @@ const toChar = (index) => {
     return String.fromCharCode(CODES.A + index)
 }
 
-export const createTable = (rowsCount = 150) => {
+export const createTable = (rowsCount = 25) => {
     
     const colsCount = CODES.Z - CODES.A + 1
     const rows = []

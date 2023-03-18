@@ -5,8 +5,7 @@ const CODES = {
 
 const createCell = (col, index) => {
     return `
-        <div class="cell" contenteditable="" data-col="${index}">
-            ${col}
+        <div class="cell" contenteditable="" data-col="${index}" data-id="${col}_${index}">
         </div>
     `
 }
@@ -59,7 +58,7 @@ export const createTable = (rowsCount = 25) => {
         const cells = new Array(colsCount)
             .fill('')
             .map((col, index) => {
-                return createCell(col, index)
+                return createCell(i, index)
             })
             .join('')
         rows.push(createRow(i + 1, cells))

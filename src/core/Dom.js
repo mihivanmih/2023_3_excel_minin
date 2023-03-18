@@ -49,6 +49,10 @@ class Dom {
         return this.$el.getBoundingClientRect()
     }
     
+    find(selector) {
+        return $(this.$el.querySelector(selector))
+    }
+    
     findAll(selector) {
         return this.$el.querySelectorAll(selector)
     }
@@ -60,6 +64,15 @@ class Dom {
             // console.log(styles[key])
         })
     }
+    
+    addClass(className) {
+        return this.$el.classList.add(className)
+    }
+    
+    removeClass(className) {
+        return this.$el.classList.remove(className)
+    }
+    
     
 }
 

@@ -1,22 +1,24 @@
 import { $ } from '../../core/Dom'
+import { Emitter } from '../../core/Emitter'
 
 export class Excel {
     constructor(selector, options) {
         this.$el = $(selector)
         this.components = options.components ?? []
+        this.emitter = new Emitter()
     }
     
     getRoot() {
         const $root = $.create('div', 'excel')
-        //  const $root = document.createElement('div')
-        //  $root.classList.add('excel')
+        
+        const componentOptions = {
+            emitter: this.emitter
+        }
     
         this.components = this.components.map( component => {
-            // const $el = document.createElement('div')
-            //$el.classList.add(component.className)
             const $el = $.create('div', component.className)
             
-            const componentOne = new component($el)
+            const componentOne = new component($el, componentOptions)
             
             $el.html(componentOne.toHtml())
             $root.append($el)

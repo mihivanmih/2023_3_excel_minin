@@ -8,7 +8,7 @@ import { createStore } from './core/createStore'
 import { rootReduser } from './redux/rootReduser'
 
 const store = createStore(rootReduser, {
-    tableTitle: 'My Test'
+    colState: {}
 })
 
 const excel = new Excel('#app', {

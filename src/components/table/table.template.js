@@ -3,23 +3,28 @@ const CODES = {
     Z: 90
 }
 
-const createCell = (col, index) => {
-    return `
-        <div
+const DEFAULT_WIDTH = 120
+
+const createCell = (state, row) => {
+    return function (_, col) {
+        const width = getWidth(state.colState, col)
+        return `
+          <div
             class="cell"
-            contenteditable=""
-            data-col="${index}"
-            data-id="${col}_${index}"
+            contenteditable
+            data-col="${ col }"
             data-type="cell"
-            >
-        </div>
+            data-id="${ row }:${ col }"
+            style="width: ${ width }"
+          ></div>
     `
+    }
 }
 
-const createCol = (content, index) => {
+const createCol = (content, index, width) => {
     return `
-        <div class="column" data-type="resizable" data-col="${index}">
-            ${content}
+        <div class="column" data-type="resizable" data-col="${ index }" style="width: ${ width }">
+            ${ content }
             <div class="col-resize" data-resize="col"></div>
         </div>
     `
@@ -32,10 +37,10 @@ const createRow = (index, content) => {
     return `
         <div class="row" data-type="resizable">
             <div class="row-info">
-                ${index ? index : ''}
-                ${resize}
+                ${ index ? index : '' }
+                ${ resize }
             </div>
-            <div class="row-data">${content}</div>
+            <div class="row-data">${ content }</div>
         </div>
     `
 }
@@ -44,7 +49,11 @@ const toChar = (index) => {
     return String.fromCharCode(CODES.A + index)
 }
 
-export const createTable = (rowsCount = 25) => {
+function getWidth(state, index) {
+    return state[index] + 'px' ?? DEFAULT_WIDTH + 'px'
+}
+
+export const createTable = (rowsCount = 25, state = {}) => {
     
     const colsCount = CODES.Z - CODES.A + 1
     const rows = []
@@ -55,17 +64,17 @@ export const createTable = (rowsCount = 25) => {
             return toChar(index)
         })
         .map((el, index) => {
-            return createCol(el, index)
+            const width = getWidth(state.colState, index)
+            return createCol(el, index, width)
         })
         .join('')
     
     rows.push(createRow(null, cols))
-    for(let i = 0; i < rowsCount; i++){
+    
+    for (let i = 0; i < rowsCount; i++) {
         const cells = new Array(colsCount)
             .fill('')
-            .map((col, index) => {
-                return createCell(i, index)
-            })
+            .map(createCell(state, i))
             .join('')
         rows.push(createRow(i + 1, cells))
     }

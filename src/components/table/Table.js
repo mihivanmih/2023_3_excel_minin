@@ -20,7 +20,7 @@ export class Table extends ExcelComponent {
     }
     TABLE_RESIZE
     toHtml () {
-        return createTable()
+        return createTable(20, this.store.getState())
     }
     
     prepare() {

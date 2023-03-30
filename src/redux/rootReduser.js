@@ -1,4 +1,4 @@
-import { TABLE_RESIZE } from './types'
+import { CHANGE_TEXT, TABLE_RESIZE } from './types'
 
 export function rootReduser(state, action) {
     let prevState
@@ -9,6 +9,8 @@ export function rootReduser(state, action) {
         prevState = state[field] ?? {}
         prevState[action.data.id] = action.data.value
         return { ...state, [field]: prevState } // id, value
+    case CHANGE_TEXT:
+        return { ...state, currentText: action.data.value }
     default: return state
     }
     //return state

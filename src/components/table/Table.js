@@ -18,7 +18,7 @@ export class Table extends ExcelComponent {
             listeners: ['mousedown', 'keydown', 'input']
         })
     }
-    TABLE_RESIZE
+    
     toHtml () {
         return createTable(20, this.store.getState())
     }
@@ -89,7 +89,11 @@ export class Table extends ExcelComponent {
     }
     
     onInput(event) {
-        this.$emit('table_input', $(event.target))
+       // this.$emit('table_input', $(event.target))
+        this.$dispatch(actions.changeText({
+            id: this.selection.current.id(),
+            value: $(event.target).text()
+        }))
     }
 
 }

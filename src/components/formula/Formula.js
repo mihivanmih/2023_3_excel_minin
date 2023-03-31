@@ -33,6 +33,7 @@ export class Formula extends ExcelComponent {
         })
     
         this.$subscribe( state => {
+            
             console.log('state.currentText',state.currentText)
             this.$formula.text(state.currentText)
         })

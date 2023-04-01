@@ -29,7 +29,7 @@ export class Table extends ExcelComponent {
     
     init() {
         super.init()
-        this.selection = new TableSelection()
+        
         this.selectCell(this.$root.find('[data-id="0_0"]'))
         
         this.$on('formula_input', text => {
@@ -40,14 +40,13 @@ export class Table extends ExcelComponent {
             this.selection.current.focus()
         })
         
-        this.$subscribe( state => {
-        
-        })
+        // this.$subscribe( state => {
+        //
+        // })
     }
     
     selectCell($cell) {
         this.selection.select($cell)
-        this.$dispatch({type: 'TEST'})
         this.$emit('table_select', $cell)
     }
     

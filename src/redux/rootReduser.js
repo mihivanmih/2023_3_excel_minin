@@ -10,7 +10,9 @@ export function rootReduser(state, action) {
         prevState[action.data.id] = action.data.value
         return { ...state, [field]: prevState } // id, value
     case CHANGE_TEXT:
-        return { ...state, currentText: action.data.value }
+        prevState = state['dataState'] ?? {}
+        prevState[action.data.id] = action.data.value
+        return { ...state, currentText: action.data.value, dataState: prevState }
     default: return state
     }
     //return state

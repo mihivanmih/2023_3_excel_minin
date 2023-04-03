@@ -28,13 +28,11 @@ export class Formula extends ExcelComponent {
             this.$formula.text($cell.text())
         })
         
-        this.$on('table_input', $cell => {
-            this.$formula.text($cell.text())
-        })
+        // this.$on('table_input', $cell => {
+        //     this.$formula.text($cell.text())
+        // })
     
         this.$subscribe( state => {
-            
-            console.log('state.currentText',state.currentText)
             this.$formula.text(state.currentText)
         })
     }

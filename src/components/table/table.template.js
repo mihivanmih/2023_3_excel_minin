@@ -8,16 +8,18 @@ const DEFAULT_HEIGHT = 24
 
 const createCell = (state, row) => {
     return function (_, col) {
-        const width = getWidth(state, col)
+        const id = `${ row }_${ col }`
+        const width = getWidth(state.colState, col)
+        const text = state.dataState[id]
         return `
           <div
             class="cell"
             contenteditable
             data-col="${ col }"
             data-type="cell"
-            data-id="${ row }_${ col }"
+            data-id="${id}"
             style="width: ${ width }"
-          ></div>
+          >${text ?? ''}</div>
     `
     }
 }
@@ -84,7 +86,7 @@ export const createTable = (rowsCount = 25, state = {}) => {
     for (let i = 0; i < rowsCount; i++) {
         const cells = new Array(colsCount)
             .fill('')
-            .map(createCell(state.colState, i))
+            .map(createCell(state, i))
             .join('')
         rows.push(createRow(i + 1, cells, state.rowState))
     }

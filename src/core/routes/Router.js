@@ -22,10 +22,9 @@ export class Router {
     }
     
     changePageHandler() {
-        console.log(ActiveRoute.path)
-        console.log(ActiveRoute.param)
-        
-        this.$placeholder.html('<h1>' + ActiveRoute.path + '</h1>')
+        const Page = this.routes.dashboard
+        const page = new Page()
+        this.$placeholder.append(page.getRoot())
     }
     
     destroy() {

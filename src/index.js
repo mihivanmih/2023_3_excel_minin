@@ -1,5 +1,6 @@
 import './scss/index.scss'
 import { Router } from './core/routes/Router'
+import { DashboardPage } from '../pages/DashboardPage'
 // import { Excel } from './components/excel/Excel'
 // import { Header } from './components/header/Header'
 // import { Toolbar } from './components/toolbar/Toolbar'
@@ -27,5 +28,5 @@ import { Router } from './core/routes/Router'
 // excel.render()
 
 new Router('#app', {
-
+    dashboard: DashboardPage
 })

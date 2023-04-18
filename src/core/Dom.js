@@ -23,11 +23,6 @@ class Dom {
         return this.$el.textContent.trim()
     }
     
-    clear() {
-        this.html('')
-        return this
-    }
-    
     on(eventType, callback) {
         this.$el.addEventListener(eventType, callback)
     }
@@ -72,6 +67,11 @@ class Dom {
         Object.keys(styles).forEach( key => {
             this.$el.style[key] = styles[key]
         })
+    }
+    
+    clear() {
+        this.html('')
+        return this
     }
     
     getStyles(styles = []) {

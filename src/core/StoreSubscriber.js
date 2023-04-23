@@ -23,6 +23,11 @@ export class StoreSubscriber {
             })
             
             this.prevState = this.store.getState()
+    
+            // eslint-disable-next-line no-undef
+            if(process.env.NODE_ENV === 'development') {
+                window['ewdux'] = this.prevState
+            }
         })
     }
     

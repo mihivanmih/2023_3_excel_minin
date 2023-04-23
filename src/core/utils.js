@@ -1,5 +1,3 @@
-import { defaultStyles } from '../constants'
-
 export function capitalize (string) {
     if(typeof string !== 'string') {
         return ''
@@ -80,4 +78,8 @@ export function debounce(fn, wait) {
 
 export function clone(obj) {
     return JSON.parse(JSON.stringify(obj))
+}
+
+export function preventDefault(event) {
+    event.preventDefault()
 }

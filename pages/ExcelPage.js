@@ -1,5 +1,5 @@
 import { Page } from '../src/core/Page'
-import { createStore } from '../src/core/createStore'
+import { createStore } from '../src/core/store/createStore'
 import { rootReduser } from '../src/redux/rootReduser'
 import {  normalizeInitialState } from '../src/redux/initialState'
 import { debounce, storage } from '../src/core/utils'

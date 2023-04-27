@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .content {
+            border: 2px solid #3c74ff;
+            width: 1500px;
+            height: 490px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .cell {
+            border: 2px solid #888888;
+            width: 1400px;
+            font-size: 22px;
+            margin: 0 auto;
+            font-family: arial;
+            text-transform: uppercase;
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        .cell span {
+        }
+        .cell span:nth-child(13), .cell span:nth-child(37) {
+            margin-left: -48px;
+        }
+    </style>
+</head>
+<body>
+        <div class="content">
+            <div class="cell">
+            </div>
+        </div>
+</body>
+
+<script>
+    const cell = document.querySelector('.cell')
+
+    let col = 0
+
+    while (col <= 300) {
+        str = "<span>Проекты </span>"
+        cell.insertAdjacentHTML( 'beforeend', str )
+        col++
+    }
+
+</script>
+</html>

@@ -1,6 +1,6 @@
-import { Page } from '../src/core/Page'
+import { Page } from '../src/core/page/Page'
 import { $ } from '../src/core/Dom'
-import { getAllRecords } from './dashboard.functions'
+import { getAllRecords } from '../src/shared/dashboard.functions'
 
 export class DashboardPage extends Page{
     getRoot() {

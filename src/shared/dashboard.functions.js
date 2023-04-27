@@ -1,4 +1,4 @@
-import { storage } from '../src/core/utils'
+import { storage } from '../core/utils'
 
 export function toHtml(key) {
     
